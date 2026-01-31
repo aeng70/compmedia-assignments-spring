@@ -3,7 +3,7 @@ def setup():
   
 def draw():
   background(220)
-  square(0,0,50)
-  square(349,0,50)
-  square(0,349,50)
-  square(349,349,50)
+  square(1,1,50)
+  square(348,1,50)
+  square(1,348,50)
+  square(348,348,50)
