@@ -8,7 +8,7 @@ def draw():
     
     #antenna
     line(200,100,200,40)
-    fill(220)
+    fill(255)
     circle(200,120,60)
     rect(120,120,160,80)
     circle(200,40,20)
@@ -35,12 +35,14 @@ def draw():
     
     #layer
     stroke(220)
+    fill(220)
     rect(160,400,80,20)
     stroke(0)
     line(165,400,195,400)
     line(205,400,235,400)
     
     #arms
+    fill(255)
     line(150,240,120,300)
     line(250,240,280,300)
     circle(120,300,20)
