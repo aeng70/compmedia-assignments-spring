@@ -4,7 +4,6 @@ def setup():
 def draw():
     background(220)
     displayCoordinates()
-    grid()
     
     #antenna
     line(200,100,200,40)
