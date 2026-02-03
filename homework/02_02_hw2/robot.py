@@ -40,6 +40,12 @@ def draw():
     line(165,400,195,400)
     line(205,400,235,400)
     
+    #arms
+    line(150,240,120,300)
+    line(250,240,280,300)
+    circle(120,300,20)
+    circle(280,300,20)
+    
 def grid():
     stroke(255)
     for x in range(width):
