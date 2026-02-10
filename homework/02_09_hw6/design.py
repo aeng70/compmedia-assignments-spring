@@ -15,13 +15,12 @@ def setup():
     
 def draw():
     if mouse_y < 200:
-        s = (stuff["upper"])
+        circle(mouse_x,mouse_y,(stuff["upper"]))
     if mouse_y < 400:
-        s = (stuff["mid"])
+        circle(mouse_x,mouse_y,(stuff["mid"]))
     if mouse_y < 600 :
-        s = (stuff["lower"])
+        circle(mouse_x,mouse_y,(stuff["lower"]))
         
     h = random(stuff["random_range"])
         
     stroke(h,100,100)
-    circle(mouse_x,mouse_y,s)
