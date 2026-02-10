@@ -7,6 +7,7 @@ def setup():
     
     global stuff
     stuff = {
+        "random_range":360,
         "upper":30,
         "mid":20,
         "lower":10
@@ -14,13 +15,13 @@ def setup():
     
 def draw():
     if mouse_y < 200:
-        stroke_weight(stuff["upper"])
+        s = (stuff["upper"])
     if mouse_y < 400:
-        stroke_weight(stuff["mid"])
+        s = (stuff["mid"])
     if mouse_y < 600 :
-        stroke_weight(stuff["lower"])
+        s = (stuff["lower"])
         
-    h = random(360)
+    h = random(stuff["random_range"])
         
     stroke(h,100,100)
-    line(mouse_x,mouse_y,pmouse_x,pmouse_y)
+    circle(mouse_x,mouse_y,s)
