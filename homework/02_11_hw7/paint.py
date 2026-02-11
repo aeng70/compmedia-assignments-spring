@@ -15,7 +15,9 @@ def setup():
     
 def draw():
     background(0,0,100)
+    fill(0,0,75)
     rect(0,0,60,399)
+    
     circle(30,30,30)
     circle(30,75,30)
     circle(30,120,30)
