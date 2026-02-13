@@ -26,6 +26,10 @@ def setup():
     global current_weight
     current_weight = 1
     
+    fill(0)
+    instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
+    text(instructions, 5, 750)
+    
 def draw():
     global current_hue
     global current_weight
@@ -65,6 +69,9 @@ def draw():
     if is_key_pressed:
         if key == key_functions["clear"]:
             background(0,0,100)
+            fill(0)
+            instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
+            text(instructions, 5, 750)
         if key == key_functions["small"]:
             current_weight = 1
         if key == key_functions["medium"]:
