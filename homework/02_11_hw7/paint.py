@@ -20,10 +20,24 @@ def setup():
         "medium":'2',
         "large":'3' }
     
+    global current_hue
+    current_hue = 0  # default to red
+    
+    global current_weight
+    current_weight = 1
+    
 def draw():
+    global current_hue
+    global current_weight
+    
+    # fixed stroke settings for ui elements
+    stroke_weight(1)
+    stroke(0,0,0)
+    
     fill(0,0,75)
     rect(0,0,60,285)
     
+    no_stroke()
     fill(colors["red"], 100, 100)
     circle(30,30,30)
     
@@ -42,6 +56,9 @@ def draw():
     fill(colors["purple"], 100, 100)
     circle(30,255,30)
     
+    stroke(current_hue, 100, 100)
+    stroke_weight(current_weight)
+    
     if is_mouse_pressed:
         line(pmouse_x, pmouse_y, mouse_x, mouse_y)
         
@@ -49,30 +66,31 @@ def draw():
         if key == key_functions["clear"]:
             background(0,0,100)
         if key == key_functions["small"]:
-            stroke_weight(1)
+            current_weight = 1
         if key == key_functions["medium"]:
-            stroke_weight(10)
+            current_weight = 10
         if key == key_functions["large"]:
-            stroke_weight(20)
+            current_weight = 20
         
 def mouse_pressed():
+    global current_hue
     if collidePointCircle(mouse_x, mouse_y, 30, 30, 30):
-        stroke(colors["red"], 100, 100)
+        current_hue = colors["red"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 75, 30):
-        stroke(colors["orange"], 100, 100)
+        current_hue = colors["orange"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 120, 30):
-        stroke(colors["yellow"], 100, 100)
+        current_hue = colors["yellow"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 165, 30):
-        stroke(colors["green"], 100, 100)
+        current_hue = colors["green"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 210, 30):
-        stroke(colors["blue"], 100, 100)
+        current_hue = colors["blue"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 255, 30):
-        stroke(colors["purple"], 100, 100)
+        current_hue = colors["purple"]
     
 def collidePointCircle(pointX, pointY, circX, circY, diameter):
   """Input coordinates for the point and x, y, and diameter (the width/height) of the circle.
@@ -87,4 +105,3 @@ def collidePointCircle(pointX, pointY, circX, circY, diameter):
     return True
   else:
     return False
-    
