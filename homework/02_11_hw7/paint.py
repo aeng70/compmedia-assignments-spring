@@ -11,7 +11,8 @@ def setup():
         "yellow":60,
         "green":120,
         "blue":240,
-        "purple":270 }
+        "purple":270,
+        "random_range":360 }
     
     global key_functions
     key_functions = {
@@ -39,7 +40,7 @@ def draw():
     stroke(0,0,0)
     
     fill(0,0,75)
-    rect(0,0,60,285)
+    rect(0,0,60,330)
     
     no_stroke()
     fill(colors["red"], 100, 100)
@@ -59,6 +60,9 @@ def draw():
     
     fill(colors["purple"], 100, 100)
     circle(30,255,30)
+    
+    fill(random(colors["random_range"]), 100, 100)
+    circle(30,300,30)
     
     stroke(current_hue, 100, 100)
     stroke_weight(current_weight)
@@ -98,6 +102,9 @@ def mouse_pressed():
         
     if collidePointCircle(mouse_x, mouse_y, 30, 255, 30):
         current_hue = colors["purple"]
+        
+    if collidePointCircle(mouse_x, mouse_y, 30, 300, 30):
+        current_hue = random(colors["random_range"])
     
 def collidePointCircle(pointX, pointY, circX, circY, diameter):
   """Input coordinates for the point and x, y, and diameter (the width/height) of the circle.
