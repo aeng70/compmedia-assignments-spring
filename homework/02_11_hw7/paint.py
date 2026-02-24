@@ -25,7 +25,7 @@ def setup():
     current_hue = 0  # default to red
     
     global current_weight
-    current_weight = 1
+    current_weight = 1 # default line weight is 1 pixel
     
     fill(0)
     instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
@@ -35,13 +35,13 @@ def draw():
     global current_hue
     global current_weight
     
-    # fixed stroke settings for ui elements
+    # settings for ui elements
     stroke_weight(1)
     stroke(0,0,0)
-    
     fill(0,0,75)
     rect(0,0,60,330)
     
+    # create color buttons
     no_stroke()
     fill(colors["red"], 100, 100)
     circle(30,30,30)
@@ -85,6 +85,7 @@ def key_pressed():
         current_weight = 20
         
 def mouse_pressed():
+    # check for what color to change to based on which button is pressed
     global current_hue
     if collidePointCircle(mouse_x, mouse_y, 30, 30, 30):
         current_hue = colors["red"]
