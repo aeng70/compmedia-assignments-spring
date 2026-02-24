@@ -12,7 +12,7 @@ def setup():
         "green":120,
         "blue":240,
         "purple":270,
-        "random_range":360 }
+        "random":360 }
     
     global key_functions
     key_functions = {
@@ -29,7 +29,7 @@ def setup():
     
     fill(0)
     instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
-    text(instructions, 5, 750)
+    text(instructions, 5, 350)
     
 def draw():
     global current_hue
@@ -61,7 +61,7 @@ def draw():
     fill(colors["purple"], 100, 100)
     circle(30,255,30)
     
-    fill(random(colors["random_range"]), 100, 100)
+    fill(random(colors["random"]), 100, 100)
     circle(30,300,30)
     
     stroke(current_hue, 100, 100)
@@ -70,18 +70,19 @@ def draw():
     if is_mouse_pressed:
         line(pmouse_x, pmouse_y, mouse_x, mouse_y)
         
-    if is_key_pressed:
-        if key == key_functions["clear"]:
-            background(0,0,100)
-            fill(0)
-            instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
-            text(instructions, 5, 750)
-        if key == key_functions["small"]:
-            current_weight = 1
-        if key == key_functions["medium"]:
-            current_weight = 10
-        if key == key_functions["large"]:
-            current_weight = 20
+def key_pressed():
+    global current_weight
+    if key == key_functions["clear"]:
+        background(0,0,100)
+        fill(0)
+        instructions = "Press C to clear,\n 1 for small brush,\n 2 for mid brush,\n 3 for big brush"
+        text(instructions, 5, 350)
+    elif key == key_functions["small"]:
+        current_weight = 1
+    elif key == key_functions["medium"]:
+        current_weight = 10
+    elif key == key_functions["large"]:
+        current_weight = 20
         
 def mouse_pressed():
     global current_hue
@@ -104,7 +105,7 @@ def mouse_pressed():
         current_hue = colors["purple"]
         
     if collidePointCircle(mouse_x, mouse_y, 30, 300, 30):
-        current_hue = random(colors["random_range"])
+        current_hue = random(colors["random"])
     
 def collidePointCircle(pointX, pointY, circX, circY, diameter):
   """Input coordinates for the point and x, y, and diameter (the width/height) of the circle.
