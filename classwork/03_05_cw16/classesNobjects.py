@@ -58,11 +58,18 @@ print(stuy.name, stuy.schoolSize)
 #3. Create a class called House that has four attributes: an address, a number
 #	of bathrooms, a price, and a number of bedrooms.
 
-
+class House:
+    def __init__(self, address, numBathrooms, price, numBedrooms):
+        self.address = address
+        self.numBathrooms = numBathrooms
+        self.price = price
+        self.numBedrooms = numBedrooms
 
 #Create instances of at least three individual houses.
 
-
+house = House("6 J St", 3, 1000000, 3)
+apt = House("34 M St", 1, 400000, 1)
+ch = House("9 E St", 2, 700000, 2)
 
 #Confirm that the class works by printing out the address and size of the second house.
 
