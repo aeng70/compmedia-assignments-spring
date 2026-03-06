@@ -73,7 +73,7 @@ ch = House("9 E St", 2, 700000, 2)
 
 #Confirm that the class works by printing out the address and size of the second house.
 
-
+print(apt.address, apt.numBedrooms)
 
 #SPICY 🌶🌶🌶
 
