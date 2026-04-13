@@ -9,7 +9,7 @@ show_conf = True
 
 def setup():
     size(700, 520)
-    text_font(create_font("Georgia", 32))
+    text_size(32)
     for _ in range(120):
         confetti.append(ConfettiPiece())
 
@@ -42,8 +42,6 @@ def draw_symbol(cx, cy):
 def draw_text():
     text_align(CENTER, CENTER)
     text_size(46)
-    fill(255, 180, 20, 160)
-    text("International Women's Day", width/2 + 2, 72)
     fill(255, 255, 255, 240)
     text("International Women's Day", width/2, 70)
     text_size(22)

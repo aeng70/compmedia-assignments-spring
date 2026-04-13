@@ -7,7 +7,7 @@ class FloatingFlower:
     def __init__(self, x, y, size=None, speed=None):
         self.x = x
         self.y = y
-        self.size = size  or random.uniform(18, 42)
+        self.size = size or random.uniform(18, 42)
         self.speed = speed or random.uniform(0.6, 2.0)
         self.colour = random.choice(COLOURS)
         self.angle = random.uniform(0, TWO_PI)
