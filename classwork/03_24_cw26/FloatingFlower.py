@@ -42,7 +42,7 @@ class FloatingFlower:
             ellipse(math.cos(a) * self.size * 0.75,
                     math.sin(a) * self.size * 0.75,
                     self.size * 0.9, self.size * 0.55)
-        # centre
+        # center
         no_stroke()
         fill(255, 220, 60, 240)
         ellipse(0, 0, self.size * 0.55, self.size * 0.55)
