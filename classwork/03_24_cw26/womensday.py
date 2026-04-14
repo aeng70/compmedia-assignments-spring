@@ -52,13 +52,10 @@ def draw_text():
     text("Fight for Feminism!", width/2, height - 62)
 
 def mouse_pressed():
-    for _ in range(10):
-        flowers.append(FloatingFlower(
-            mouse_x + random.uniform(-30, 30),
-            mouse_y + random.uniform(-30, 30),
-            size  = random.uniform(14, 34),
-            speed = random.uniform(1.0, 2.5)
-        ))
+    flowers.append(FloatingFlower(mouse_x, mouse_y,
+        size  = random.uniform(14, 34),
+        speed = random.uniform(1.0, 2.5)
+    ))
 
 def key_pressed():
     global show_conf
