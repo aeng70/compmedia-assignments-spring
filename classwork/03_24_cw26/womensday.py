@@ -5,7 +5,7 @@ from ConfettiPiece import ConfettiPiece
 
 flowers = []
 confetti = []
-show_conf = True
+show_conf = False
 
 def setup():
     size(700, 520)
@@ -37,7 +37,7 @@ def draw_symbol(cx, cy):
     stroke_weight(3.5)
     ellipse(cx, cy - r * 0.25, r * 1.4, r * 1.4)
     line(cx, cy - r * 0.25 + r * 0.7, cx, cy + r * 0.75)
-    line(cx - r * 0.35, cy + r * 0.45, cx + r * 0.35, cy + r * 0.45)
+    line(cx - r * 0.35, cy + (r + 20) * 0.45, cx + r * 0.35, cy + (r + 20) * 0.45)
 
 def draw_text():
     text_align(CENTER, CENTER)
