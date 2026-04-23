@@ -1,13 +1,13 @@
 pixelList = {}
 
 def setup():
-    size(350, 250)
+    size(400, 160)
     global pixelList, img
     
     img = load_image("mountain-3.jpg")
     
-    img.resize(width // 2, 0)
-    image(img, 20, 20)
+    img.resize(width, 0)
+    image(img, 0, 0)
     
     load_pixels()
     
