@@ -5,8 +5,8 @@ filter1 = {
     "3" : INVERT,
     "4" : POSTERIZE,
     "5" : BLUR,
-    "7" : ERODE,
-    "8" : DILATE
+    "6" : ERODE,
+    "7" : DILATE
 }
 
 def setup():
@@ -21,7 +21,11 @@ def key_pressed():
     for i in range(0, 8):
         if is_key_pressed:
             if key == str(i):
-                if i == 4:
+                if i == 0:
+                    img = load_image("mountain-3.jpg")
+                    img.resize(width, 0)    
+                    image(img, 0, 0)
+                elif i == 4:
                     apply_filter(filter1[str(i)], 4)
                 else:
                     apply_filter(filter1[str(i)])
