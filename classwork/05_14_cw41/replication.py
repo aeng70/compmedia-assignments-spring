@@ -9,8 +9,6 @@ def setup_pixels():
                 np_pixels[y, x, 2] = 255
             
     update_np_pixels()
-            
-            
     
 def setup():
     global s
@@ -23,10 +21,10 @@ def setup():
 def evaluate_neighbors():
     global s 
     #code to update neighbors-state
+    
 
 def transition():
-    #code to apply the rules from
-    #neighbors’ state
+    #code to apply the rules from neighbors’ state
     update_np_pixels()
 
 def draw(): # driver
