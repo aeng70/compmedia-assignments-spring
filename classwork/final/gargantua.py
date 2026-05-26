@@ -51,7 +51,7 @@ def draw():
  
     _angle += 0.38
     for sp in _sparks:
-        sp[1] = (sp[1] + math.radians(sp[2])) % TWO_PI   # Keplerian advance
+        sp[1] = (sp[1] + math.radians(sp[2])) % TWO_PI
 
 def _doppler(offset=0.0):
     return 0.75 + 0.65 * math.cos(math.radians(_angle * 2.1) + offset)
@@ -198,7 +198,7 @@ def _draw_sparks(cx, cy):
 
     for r, phi, speed, bri in _sparks:
         screen_xValue = cx + r * math.cos(phi)
-        screen_yValue = cy + r * math.sin(phi) * 0.35   # disk squash
+        screen_yValue = cy + r * math.sin(phi) * 0.35
 
         if math.sin(phi) < 0.0:
             continue
