@@ -8,7 +8,6 @@ planet_angle = 0.0
 ships = []
 asteroids = []
 stars = []
-paused = False
 planet_pg = None
  
 CX, CY = 480, 350
@@ -126,8 +125,6 @@ def make_planet():
 # Draw loop (Skill 4)
 def draw():
     global angle, planet_angle
-    if paused:
-        return
     background(228, 30, 5)
     draw_stars()
     draw_disk(back=True)
@@ -238,8 +235,5 @@ def mouse_pressed(): # Skill 5: mouse event function
     ships.append(Rocket(mouse_x, mouse_y)) # Skill 5: mouse_x, mouse_y variables
  
 def key_pressed(): # Skill 5: keyboard event function
-    global paused
     if key == 'r' or key == 'R': # Skill 5: key variable
         ships.clear()
-    elif key == ' ':
-        paused = not paused
