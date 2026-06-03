@@ -70,7 +70,7 @@ class Asteroid:
  
     def update(self):
         # Screen wrapping
-        self.x = (self.x + self.vx) % width   # Skill 9: wrap around screen edges
+        self.x = (self.x + self.vx) % width # Skill 9: wrap around screen edges
         self.y = (self.y + self.vy) % height
         
         # Rotation
