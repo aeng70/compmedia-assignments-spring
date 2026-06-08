@@ -8,9 +8,7 @@ planet_angle = 0.0
 ships = []
 asteroids = []
 stars = []
-paused = False
 planet_pg = None
-vignette = None
  
 CX, CY = 480, 350
 BH_R = 80
@@ -71,7 +69,7 @@ class Asteroid:
  
     def update(self):
         # Screen wrapping
-        self.x = (self.x + self.vx) % width   # Skill 9: wrap around screen edges
+        self.x = (self.x + self.vx) % width # Skill 9: wrap around screen edges
         self.y = (self.y + self.vy) % height
         
         # Rotation
@@ -94,7 +92,7 @@ class Asteroid:
  
 # Setup (Skill 4)
 def setup():
-    global planet_pg, vignette
+    global planet_pg
     size(960, 700)
     color_mode(HSB, 360, 100, 100, 100) # Skill 3: HSB color mode
     frame_rate(60)
@@ -107,17 +105,6 @@ def setup():
         asteroids.append(Asteroid()) # Skill 10: create Asteroid objects
  
     planet_pg = make_planet() # Skill 8: create off-screen image
- 
-    # Skill 12: precompute vignette mask using numpy
-    # Distance field equation:
-    # d = √(((x - CX)/(960*0.65))² + ((y - CY)/(700*0.65))²)
-    y_i = np.arange(700, dtype=np.float32).reshape(-1, 1)
-    x_i = np.arange(960, dtype=np.float32).reshape(1, -1)
-    d = np.sqrt(((x_i - CX) / (960 * 0.65))**2 + ((y_i - CY) / (700 * 0.65))**2)
-    
-    # Clamp equation:
-    # vignette = clip(1.3 - d, 0.15, 1.0)
-    vignette = np.clip(1.3 - d, 0.15, 1.0)[:, :, np.newaxis].astype(np.float32)
  
 # Skill 8: create planet as an off-screen image
 def make_planet():
@@ -138,8 +125,6 @@ def make_planet():
 # Draw loop (Skill 4)
 def draw():
     global angle, planet_angle
-    if paused:
-        return
     background(228, 30, 5)
     draw_stars()
     draw_disk(back=True)
@@ -151,16 +136,7 @@ def draw():
         a.update()
         a.draw()
     update_ships()
-    apply_vignette() # Skill 12: numpy pixel effect
     angle += 0.6
- 
-# Skill 12: apply vignette using numpy pixel manipulation
-def apply_vignette():
-    # Pixel shading equation:
-    # pixel = pixel × vignette
-    load_np_pixels()
-    np_pixels[:, :, :3] = (np_pixels[:, :, :3].astype(np.float32) * vignette).clip(0, 255).astype(np.uint8)
-    update_np_pixels()
  
 # Skill 8 + 11: draw orbiting planet
 def draw_planet():
@@ -254,14 +230,10 @@ def draw_rocket_shape(x, y, facing, dist):
     triangle( sz * 0.28, sz * 0.25,  sz * 0.95, sz * 0.80,  sz * 0.28, sz * 0.80)
     pop_matrix() # Skill 11: restore transform state
  
- 
 # Skill 5: Mouse and keyboard events
 def mouse_pressed(): # Skill 5: mouse event function
     ships.append(Rocket(mouse_x, mouse_y)) # Skill 5: mouse_x, mouse_y variables
  
 def key_pressed(): # Skill 5: keyboard event function
-    global paused
     if key == 'r' or key == 'R': # Skill 5: key variable
         ships.clear()
-    elif key == ' ':
-        paused = not paused
