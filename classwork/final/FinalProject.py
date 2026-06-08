@@ -16,7 +16,7 @@ BH_R = 80
 # Skill 10: Rocket class
 class Rocket:
     def __init__(self, x, y):
-        self.x, self.y   = float(x), float(y)
+        self.x, self.y = float(x), float(y)
         self.vx, self.vy = 0.0, 0.0
  
     def update(self):
@@ -36,8 +36,8 @@ class Rocket:
         self.vy += dy/d * g
         
         # Position update
-        self.x  += self.vx
-        self.y  += self.vy
+        self.x += self.vx
+        self.y += self.vy
         return True
  
     def draw(self):
